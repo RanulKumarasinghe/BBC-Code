@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+
+#div1 {
+
+}
+
+#line {
+  width:115%;
+  margin: auto;
+  border: 1px solid #0d0d0d;
+}
+
+
+</style>
+
+
+<title>Ratings</title>
+
+</head>
+<body>
+  <h1> Multiple articles </h1>
+  <div id = "div1"> </div>
+
+  <br>
+  <br>
+
+  <div id = "line"></div>
+
+  <br><br>
+
+  <div id ="div2"> </div>
+  <br><br>
+
+  <div id = "line"></div>
+
+  <br><br>
+
+  <div id ="div3"> </div>
+  <br><br>
+
+  <div id = "line"></div>
+
+  <br><br>
+
+  <div id ="div4"> </div>
+  <br><br>
+
+  <div id = "line"></div>
+
+  <br><br>
+
+  <div id ="div5"> </div>
+  <br><br>
+
+  <div id = "line"></div>
+  <br><br>
+  <form id = "review" target="_blank" method="POST">
+    <h3> Add a ranking to an article that with a score from one to five </h3>
+
+  First Article:
+
+  <select name="Score" id="score1">
+    <option value="One">1</option>
+    <option value="Two">2</option>
+    <option value="Three">3</option>
+    <option value="Four">4</option>
+    <option value="Five">5</option>
+  </select>
+  Second Article:
+  <select name="Score" id="score2">
+    <option value="One">1</option>
+    <option value="Two">2</option>
+    <option value="Three">3</option>
+    <option value="Four">4</option>
+    <option value="Five">5</option>
+  </select>
+  Third Article:
+  <select name="Score" id="score3">
+    <option value="One">1</option>
+    <option value="Two">2</option>
+    <option value="Three">3</option>
+    <option value="Four">4</option>
+    <option value="Five">5</option>
+  </select>
+  Fourth Article:
+  <select name="Score" id="score4">
+    <option value="One">1</option>
+    <option value="Two">2</option>
+    <option value="Three">3</option>
+    <option value="Four">4</option>
+    <option value="Five">5</option>
+  </select>
+  Fifth Article:
+  <select name="Score" id="score5">
+    <option value="One">1</option>
+    <option value="Two">2</option>
+    <option value="Three">3</option>
+    <option value="Four">4</option>
+    <option value="Five">5</option>
+  </select>
+  <br><br>
+  <button id="submit">Submit</button>
+</form>
+
+</body>
+<script>
+
+
+
+
+  $(document).ready(function(){
+
+
+    if(document.readyState != 'complete')
+    {
+      var longtime = window.setTimeout( function() {
+          alert( "Slow connection" );
+      }, 10000 );
+    }
+    else{
+    window.addEventListener( 'load', function() {
+        window.clearTimeout( longtime );
+    }, false );
+    }
+
+    $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-1.json",function(data) {
+      console.log(data.title);
+      $.each(data.body,function(key, val) {
+
+        var type = val.type;
+        console.log(type);
+        if(type == "heading") {
+           $("#div1").append("<h2>" + val.model.text + "</h2>");
+        }
+        else if(type == "paragraph") {
+           $("#div1").append('<option value="'+ val.model.text + '">' + val.model.text + '</option>');
+        }
+        else if (type == "image") {
+           $("#div1").append('<img src="'+ val.model.url + 'alt=' + val.model.altText + 'width=' + val.model.width + 'height='+ val.model.height + '">');
+        }
+        else if (type == "list") {
+           $("#div1").append("<ol><li>" + val.model.items + "</ol></li>");
+        }
+
+    });
+  });
+
+
+   $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-2.json",function(data) {
+     console.log(data.title);
+     $.each(data.body,function(key, val) {
+
+
+       var type = val.type;
+       console.log(type);
+       if(type == "heading") {
+          $("#div2").append("<h2>" + val.model.text + "</h2>");
+       }
+       else if(type == "paragraph") {
+          $("#div2").append('<option value="'+ val.model.text + '">' + val.model.text + '</option>');
+       }
+       else if (type == "image") {
+          $("#div2").append('<img src="'+ val.model.url + 'alt=' + val.model.altText + 'width=' + val.model.width + 'height='+ val.model.height + '">');
+       }
+       else if (type == "list") {
+          $("#div2").append("<ol><li>" + val.model.items + "</ol></li>");
+       }
+
+   });
+ });
+
+ $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-3.json",function(data) {
+   console.log(data.title);
+   $.each(data.body,function(key, val) {
+
+     var type = val.type;
+     console.log(type);
+     if(type == "heading") {
+        $("#div3").append("<h2>" + val.model.text + "</h2>");
+     }
+     else if(type == "paragraph") {
+        $("#div3").append('<option value="'+ val.model.text + '">' + val.model.text + '</option>');
+     }
+     else if (type == "image") {
+        $("#div3").append('<img src="'+ val.model.url + 'alt=' + val.model.altText + 'width=' + val.model.width + 'height='+ val.model.height + '">');
+     }
+     else if (type == "list") {
+        $("#div3").append("<ol><li>" + val.model.items + "</ol></li>");
+     }
+
+
+   });
+  });
+
+  $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-4.json",function(data) {
+    console.log(data.title);
+    $.each(data.body,function(key, val) {
+
+      var type = val.type;
+      console.log(type);
+      if(type == "heading") {
+         $("#div4").append("<h2>" + val.model.text + "</h2>");
+      }
+      else if(type == "paragraph") {
+         $("#div4").append('<option value="'+ val.model.text + '">' + val.model.text + '</option>');
+      }
+      else if (type == "image") {
+         $("#div4").append('<img src="'+ val.model.url + 'alt=' + val.model.altText + 'width=' + val.model.width + 'height='+ val.model.height + '">');
+      }
+      else if (type == "list") {
+         $("#div4").append("<ol><li>" + val.model.items + "</ol></li>");
+      }
+
+    });
+   });
+
+   $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-5.json",function(data) {
+     console.log(data.title);
+     $.each(data.body,function(key, val) {
+
+       var type = val.type;
+       console.log(type);
+       if(type == "heading") {
+          $("#div5").append("<h2>" + val.model.text + "</h2>");
+       }
+       else if(type == "paragraph") {
+          $("#div5").append('<option value="'+ val.model.text + '">' + val.model.text + '</option>');
+       }
+       else if (type == "image") {
+          $("#div5").append('<img src="'+ val.model.url + 'alt=' + val.model.altText + 'width=' + val.model.width + 'height='+ val.model.height + '">' + "<br>");
+       }
+       else if (type == "list") {
+          $("#div5").append("<ol><li>" + val.model.items + "</ol></li>");
+       }
+
+
+     });
+    });
+
+  $(document).on("click","#submit", function() {
+      var sc1 = document.getElementById("score1").value;
+      var sc2 = document.getElementById("score2").value;
+      var sc3 = document.getElementById("score3").value;
+      var sc4 = document.getElementById("score4").value;
+      var sc5 = document.getElementById("score5").value;
+
+      var check = [sc1, sc2, sc3, sc4, sc5];
+      var ns = true;
+      for(var i = 0; i < check.length; i++){
+        if(check.indexOf(check[i], i + 1) >= 0){
+          ns = false;
+          break;
+        }
+      }
+   if(ns){
+     document.review.submit();
+   }else{
+     alert("Cannot choose the same ranking multiple times");
+   }
+  });
+
+});
+
+</script>
+
+</html>
