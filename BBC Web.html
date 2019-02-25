@@ -8,9 +8,6 @@
 
 <style>
 
-#div1 {
-
-}
 
 #line {
   width:115%;
@@ -118,7 +115,7 @@
 
   $(document).ready(function(){
 
-
+    //Check connection
     if(document.readyState != 'complete')
     {
       var longtime = window.setTimeout( function() {
@@ -130,7 +127,7 @@
         window.clearTimeout( longtime );
     }, false );
     }
-
+    //Generate article 1
     $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-1.json",function(data) {
       console.log(data.title);
       $.each(data.body,function(key, val) {
@@ -153,7 +150,7 @@
     });
   });
 
-
+   //Generate article 2
    $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-2.json",function(data) {
      console.log(data.title);
      $.each(data.body,function(key, val) {
@@ -176,7 +173,7 @@
 
    });
  });
-
+ //Generate article 3
  $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-3.json",function(data) {
    console.log(data.title);
    $.each(data.body,function(key, val) {
@@ -199,7 +196,7 @@
 
    });
   });
-
+  //Generate article 4
   $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-4.json",function(data) {
     console.log(data.title);
     $.each(data.body,function(key, val) {
@@ -221,7 +218,7 @@
 
     });
    });
-
+   //Generate article 5
    $.getJSON("https://raw.githubusercontent.com/bbc/news-coding-test-dataset/master/data/article-5.json",function(data) {
      console.log(data.title);
      $.each(data.body,function(key, val) {
@@ -244,7 +241,7 @@
 
      });
     });
-
+  //Check for multiple inputs on click
   $(document).on("click","#submit", function() {
       var sc1 = document.getElementById("score1").value;
       var sc2 = document.getElementById("score2").value;
